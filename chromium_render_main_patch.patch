@@ -1,0 +1,15 @@
+Index: renderer_main.cc
+===================================================================
+--- renderer_main.cc	(revision 87952)
++++ renderer_main.cc	(working copy)
+@@ -255,6 +255,10 @@
+               MessageLoop::TYPE_UI : MessageLoop::TYPE_DEFAULT);
+ #endif
+ 
++  // Cause advapi32 to load before the sandbox is turned on.
++  unsigned int dummy_rand;
++  rand_s(&dummy_rand);
++
+   base::PlatformThread::SetName("CrRendererMain");
+ 
+   ui::SystemMonitor system_monitor;
